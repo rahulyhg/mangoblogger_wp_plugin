@@ -1,0 +1,87 @@
+<script>
+var dataLayer = window.dataLayer = window.dataLayer || [];
+dataLayer.push({
+  page: {
+	
+	
+    category1: 'Auto',
+    category2: 'Life hacks',
+    platform: 'Foo',
+    wordCount: 40,
+    length: 400
+  },
+  user: {
+    backendId: '20d75b5c-5143-11e7-b114-b2f933d5fe66'
+  },
+  site: {
+    owner: 'bar'
+  },
+  session: {
+    status: 'anonymous',
+    checkedOut: false
+  }
+});
+</script>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','*');</script>
+<!-- End Google Tag Manager -->
+<meta charset="<?php bloginfo( 'charset' ); ?>">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
+
+
+// Add this script after you make your dataLayer = []; call
+// AND after your GTM code snippet
+// This needs to go inside the header.php in order for it work globally across your site
+<script type="text/javascript">
+	// URL toolbox - helps grabbing elements in the URL
+	var _d = document;
+	var _dl = _d.location;
+	var _dlp = _dl.pathname;
+	var _dls = _dl.search;
+	var _dr = _d.referrer;
+
+	// Initialize your data layer and start pushing variables from custom WordPress PHP data layer
+	dataLayer.push({ 
+		<?php if (is_404()){
+		// For: 404 page/ 404 errors
+		// 404 pages, handled with a /404/ prefix as well as the referrer ?>
+		"GTM_WP_404": "<?php print is_404(); ?>",
+		"GTM_WP_404_URL": "/404" + _dlp + "/"+ _dr,
+		<?php } ?>
+		<?php if (is_single()) {
+		// For: single posts
+		// Query the WP API to retrieve post type, author, category, and post name
+		
+		$gtm_cat = get_the_category();
+
+		// Now we populate the Javascript data layer with our PHP variables
+		?>
+		"GTM_WP_pagename": "<?php print wp_title(); ?>",
+		"GTM_WP_authorname": "<?php print get_the_author(); ?>", 
+		"GTM_WP_post_type": "<?php print get_post_type(); ?>", 
+		"GTM_WP_Category": "<?php print $gtm_cat[0]->cat_name; ?>", 
+		<?php } ?>
+		
+		<?php if(is_page()|| is_category()) {
+		// We only want the page name and author name for pages and categories
+		// For: pages and categories
+		// Query the WP API to retrieve page name and author name
+		?>
+		
+		"GTM_WP_pagename": "<?php print wp_title(); ?>",
+		"GTM_WP_authorname": "<?php print get_the_author(); ?>",  
+		<?php }
+		// Date is appended to each if statement above
+		// Done with WordPress page type/conditions, you can add more default dataLayer variables below ?>
+		"GTM_WP_date": "<?php print the_date($format, $before, $after, $echo); ?>"
+	});
+
+</script> 
