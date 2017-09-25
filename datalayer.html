@@ -1,14 +1,10 @@
+
+<!-- Before Google Tag Manager -->
 <script>
 var dataLayer = window.dataLayer = window.dataLayer || [];
 dataLayer.push({
   page: {
-	
-	
     category1: 'Auto',
-    category2: 'Life hacks',
-    platform: 'Foo',
-    wordCount: 40,
-    length: 400
   },
   user: {
     backendId: '20d75b5c-5143-11e7-b114-b2f933d5fe66'
@@ -31,15 +27,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
 })(window,document,'script','dataLayer','*');</script>
 <!-- End Google Tag Manager -->
-<meta charset="<?php bloginfo( 'charset' ); ?>">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
-<link rel="profile" href="http://gmpg.org/xfn/11">
-<link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>">
 
-
-// Add this script after you make your dataLayer = []; call
-// AND after your GTM code snippet
-// This needs to go inside the header.php in order for it work globally across your site
+<!-- After Google Tag Manager -->
 <script type="text/javascript">
 	// URL toolbox - helps grabbing elements in the URL
 	var _d = document;
@@ -67,8 +56,11 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 		"GTM_WP_pagename": "<?php print wp_title(); ?>",
 		"GTM_WP_authorname": "<?php print get_the_author(); ?>", 
 		"GTM_WP_post_type": "<?php print get_post_type(); ?>", 
-		"GTM_WP_Category": "<?php print $gtm_cat[0]->cat_name; ?>", 
+		"GTM_WP_Category": "<?php print $gtm_cat[0]->cat_name; ?>",
+
 		<?php } ?>
+
+		.woocommerce-product-details__short-description
 		
 		<?php if(is_page()|| is_category()) {
 		// We only want the page name and author name for pages and categories

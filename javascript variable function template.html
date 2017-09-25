@@ -1,0 +1,50 @@
+//javascript variable function template
+
+
+
+
+Product Description 
+Blog Date posted
+Tags 
+
+
+
+* Master template:
+
+function() {
+  try {
+    
+    return ;
+    
+  } catch(e) {
+      return "";
+      
+    }
+  }
+
+*Todo
+page, case study, ux term, 
+
+*Page Name - Done through php
+*Content Type - Post, product - done through php
+
+* variable - Author name
+function() {
+  try {
+    return document.querySelector(".author>a").innerText.trim();    
+  } catch(e) {
+      return "";   
+    }
+  }
+
+* variable - product price 
+
+document.querySelector(".summary.entry-summary>.price>.woocommerce-Price-amount.amount").innerText.match(/^.{1}(.*).{0}/i)[1].trim()
+
+* variable - Product Category 
+document.querySelector(".posted_in>a").innerText.trim()
+
+*variable - Blog date posted
+document.querySelector(".posted-on").innerText.match(/^.{9}(.*).{0}/i)[1].trim()
+
+
