@@ -1,10 +1,19 @@
-<?php
-/**
-* Plugin Name: Test
-* Description: Plugin which print hello world on the dashboard screen installed
-* Version: 1.0 
-* Author: yatin_mangoblogger
-*/
- echo "<h1>Hello World! </h1>";
 
- ?>
+<?php
+/*
+Plugin Name: Test plugin v2
+Description: A test plugin to demonstrate wordpress functionality
+Author: yatin
+Version: 0.2
+*/
+add_action('admin_menu', 'test_plugin_setup_menu');
+ 
+function test_plugin_setup_menu(){
+        add_menu_page( 'Test Plugin Page', 'Test Plugin', 'manage_options', 'test-plugin', 'test_init' );
+}
+ 
+function test_init(){
+        echo "<h1>Hello World!</h1>";
+}
+ 
+?>
